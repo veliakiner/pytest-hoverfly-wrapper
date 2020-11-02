@@ -72,7 +72,7 @@ def test_generate_sim(testdir):
     assert not os.path.exists(sim_file)
 
     # Run a test with the GeneratedSimulation marker to verify we get a simulation file
-    base_pyfile = dedent(
+    base_pyfile_1 = dedent(
         """
     from pytest_hoverfly_wrapper.simulations import GeneratedSimulation
     import pytest
@@ -86,16 +86,33 @@ def test_generate_sim(testdir):
             "https": "http://localhost:{}".format(proxy_port),
         }
         r = requests.get("http://google.com", proxies=proxies)
+        assert r.headers.get("Hoverfly-Cache-Served")
     """
     )
-    testdir.makepyfile(base_pyfile)
+    base_pyfile_2 = dedent(
+        """
+    from pytest_hoverfly_wrapper.simulations import GeneratedSimulation
+    import pytest
+    import requests
+    
+    @pytest.mark.simulated(GeneratedSimulation(file="foobar.json"))
+    def test_generate(setup_hoverfly):
+        proxy_port = setup_hoverfly[1]
+        proxies = {
+            "http": "http://localhost:{}".format(proxy_port),
+            "https": "http://localhost:{}".format(proxy_port),
+        }
+        r = requests.get("https://google.com", proxies=proxies)
+        assert not r.headers.get("Hoverfly-Cache-Served")
+    """
+    )
+    testdir.makepyfile(base_pyfile_1)
     result = testdir.runpytest()
     assert result.ret == 0
     assert os.path.isfile(sim_file)
 
     # Run the test again, but this time check for the Hoverfly-Cache-Served header, which indicates that the simulation was used.
-    assert_cached_response = """    assert r.headers.get("Hoverfly-Cache-Served")"""
-    testdir.makepyfile(base_pyfile + assert_cached_response)
+    testdir.makepyfile(base_pyfile_2)
     result = testdir.runpytest("-s")
     assert result.ret == 0
 

@@ -17,53 +17,17 @@
                     ],
                     "scheme": [
                         {
-                            "matcher": "glob",
-                            "value": "http*"
+                            "matcher": "exact",
+                            "value": "https"
                         }
                     ]
                 },
                 "response": {
                     "encodedBody": true,
-                    "status": 404,
+                    "status": 451,
                     "body": "",
                     "templated": false,
                     "headers": {
-                        "Access-Control-Allow-Origin": [
-                            "*"
-                        ],
-                        "Server": [
-                            "gunicorn/19.4.5"
-                        ],
-                        "Date": [
-                            "Tue, 17 Jul 2018 10:00:53 GMT"
-                        ],
-                        "Via": [
-                            "1.1 vegur"
-                        ],
-                        "Hoverfly": [
-                            "Was-Here"
-                        ],
-                        "Content-Type": [
-                            "application/json"
-                        ],
-                        "Content-Length": [
-                            "0"
-                        ],
-                        "Content-Encoding": [
-                            "gzip"
-                        ],
-                        "Connection": [
-                            "keep-alive"
-                        ],
-                        "Access-Control-Allow-Methods": [
-                            "POST, GET, OPTIONS, PUT, DELETE, PATCH"
-                        ],
-                        "Vary": [
-                            "Accept-Encoding"
-                        ],
-                        "Access-Control-Allow-Headers": [
-                            "origin, content-type, accept, x-requested-with"
-                        ],
                         "Hoverfly-Cache-Served": [
                             "True"
                         ]
