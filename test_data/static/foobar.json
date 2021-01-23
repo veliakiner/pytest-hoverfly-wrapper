@@ -1,0 +1,87 @@
+{
+    "data": {
+        "pairs": [
+            {
+                "request": {
+                    "path": [
+                        {
+                            "matcher": "exact",
+                            "value": "/"
+                        }
+                    ],
+                    "method": [
+                        {
+                            "matcher": "exact",
+                            "value": "GET"
+                        }
+                    ],
+                    "destination": [
+                        {
+                            "matcher": "exact",
+                            "value": "google.com"
+                        }
+                    ],
+                    "scheme": [
+                        {
+                            "matcher": "exact",
+                            "value": "https"
+                        }
+                    ],
+                    "body": [
+                        {
+                            "matcher": "exact",
+                            "value": ""
+                        }
+                    ]
+                },
+                "response": {
+                    "status": 201,
+                    "body": "",
+                    "encodedBody": false,
+                    "headers": {
+                        "Cache-Control": [
+                            "public, max-age=2592000"
+                        ],
+                        "Content-Length": [
+                            "219"
+                        ],
+                        "Content-Type": [
+                            "text/html; charset=UTF-8"
+                        ],
+                        "Date": [
+                            "Sat, 23 Jan 2021 14:07:16 GMT"
+                        ],
+                        "Expires": [
+                            "Mon, 22 Feb 2021 14:07:16 GMT"
+                        ],
+                        "Hoverfly": [
+                            "Was-Here"
+                        ],
+                        "Server": [
+                            "gws"
+                        ],
+                        "X-Frame-Options": [
+                            "SAMEORIGIN"
+                        ],
+                        "X-Xss-Protection": [
+                            "0"
+                        ],
+                        "Hoverfly-Cache-Served": [
+                            "True"
+                        ]
+                    },
+                    "templated": false
+                }
+            }
+        ],
+        "globalActions": {
+            "delays": [],
+            "delaysLogNormal": []
+        }
+    },
+    "meta": {
+        "schemaVersion": "v5.1",
+        "hoverflyVersion": "v1.3.1",
+        "timeExported": "2021-01-23T14:07:16Z"
+    }
+}
